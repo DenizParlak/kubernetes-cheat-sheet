@@ -1,5 +1,6 @@
 # kubernetes-cheat-sheet
 
+
 # Nodes
 
 1-) Node'ların listelenmesi
@@ -40,12 +41,25 @@ Bir node hakkında çok daha ayrıntılı bilgi alabilmek için "get" ile birlik
 
 ```kubectl get no -o yaml```
 
-<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/4.png" width="450">
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/3.png" width="450">
 
 
 # Pods
 
-1-) Pod'ların listelenmesi
+1-) Yeni Pod oluşturma
+
+```kubectl create -f dosya_adı``` ve(ya) ```kubectl apply -f dosya_adı```
+
+### Not: create "Imperative", apply "Declarative" mantığıyla çalışır.
+
+Pod oluşturulurken mevcut YAML dosyası kullanlabileceği gibi "run" ve belirleyici diğer parametreler ile birlikte de aynı işlem gerçekleştirilebilir.
+
+```kubectl run pod_adı --image=redis```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/27.png" width="450">
+
+
+2-) Pod'ların listelenmesi
 
 ```kubectl get pods``` ve(ya) ```kubectl get po```
 
@@ -60,7 +74,7 @@ Bir node hakkında çok daha ayrıntılı bilgi alabilmek için "get" ile birlik
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/17.png" width="450">
 
 
-2-) Pod'lar hakkında bilgi alma
+3-) Pod'lar hakkında bilgi alma
 
 ```kubectl describe pods``` ve(ya) ```kubectl describe po```
 
@@ -68,27 +82,52 @@ Bir node hakkında çok daha ayrıntılı bilgi alabilmek için "get" ile birlik
 
 Pod adı belirtilmediği sürece tüm pod'ların bilgisi listelenir. Özellikle troubleshooting gerektiren durumlarda ilk başvurulan komutlardan birisidir.
 
+4-) Pod'ların silinmesi
+
+```kubectl delete pods``` ve(ya) ```kubectl delete po```
+
+Çoklu silmeler için Pod isimleri aralarında boşluk bırakalarak tanımlanabilir.
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/28.png" width="450">
+
 
 # Namespaces
 
-1-) Namespace'lerin listelenmesi
+1-) Yeni namespace oluşturma
+
+```kubectl create namespace namespace_adı```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/29.png" width="450">
+
+2-) Namespace'lerin listelenmesi
 
 ```kubectl get namespaces``` ve(ya) ```kubectl get ns```
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/8.png" width="450">
 
-
 "-o yaml" parametresi namespace'ler için de aktiftir.
 
-2-) Namespace'ler hakkında bilgi alma
+3-) Namespace'ler hakkında bilgi alma
 
 ```kubectl describe namespaces``` ve(ya) ```kubectl describe ns```
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/9.png" width="450">
 
+4-) Namespace'lerin silinmesi
+
+```kubectl delete namespace namespace_adı``` ve(ya) ```kubectl delete ns namespace_adı```
+
+
 # Deployments
 
-1-) Deployment'ların listelenmesi
+1-) Yeni Deployment oluşturma
+
+```kubectl create deployment deployment_adı --image=imaj_adı```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/30.png" width="450">
+
+
+2-) Deployment'ların listelenmesi
 
 ```kubectl get deployments``` ve(ya) ```kubectl get deploy```
 
@@ -101,7 +140,7 @@ Kullanılan Docker imajları ve "selector" bilgisi "-o wide" ile görüntüleneb
 
 "-o yaml" parametresi aynı şekilde Deployment'lar için de kullanılabilir.
 
-2-) Deployment'lar hakkında bilgi alma
+3-) Deployment'lar hakkında bilgi alma
 
 ```kubectl describe deployments``` ve(ya) ```kubectl describe deploy```
 
@@ -109,10 +148,29 @@ Yine troubleshoot durumlarında kullanılan başlıca komutlardan birisidir.
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/12.png" width="450">
 
+4-) Deployment'ların silinmesi
+
+```kubectl delete deployments deployment_adı``` ve(ya) ```kubectl delete deploy deployment_adı```
+
 
 # Services
 
-1-) Servislerin listelenmesi
+1-) Yeni Service oluşturma
+
+```kubectl create service loadbalancer mylb --tcp="80:8080"```
+
+Ana şablon "kubectl create service" ile başlar, sonrasında service tipi belirtilmelidir. Bu örnekte "loadbalancer" tipi seçilmiştir. Diğer tipler:
+
+- clusterip
+- externalname
+- nodeport
+
+Sonrasında service adı ve port tanımlanır.
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/31.png" width="450">
+
+
+1-) Service'lerin listelenmesi
 
 ```kubectl get services``` ve(ya) ```kubectl get svc```
 
@@ -125,7 +183,7 @@ Yine troubleshoot durumlarında kullanılan başlıca komutlardan birisidir.
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/15.png" width="450">
 
 
-2-) Servisler hakkında bilgi alma
+2-) Service'ler hakkında bilgi alma
 
 ```kubectl describe services``` ve(ya) ```kubectl describe svc```
 
@@ -158,6 +216,7 @@ Yine troubleshoot durumlarında kullanılan başlıca komutlardan birisidir.
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/22.png" width="450">
 
+
 # PersistentVolumeClaim
 
 1-) PersistentVolumeClaim'ların listelenmesi
@@ -172,6 +231,20 @@ Yine troubleshoot durumlarında kullanılan başlıca komutlardan birisidir.
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/24.png" width="450">
 
+
+# ReplicaSets
+
+1-) ReplicaSets listelenmesi
+
+```kubectl get replicasets``` ve(ya) ```kubectl get rs```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/25.png" width="450">
+
+2-) ReplicaSets hakkında bilgi alma
+
+```kubectl describe replicasets``` ve(ya) ```kubectl describe rs```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/26.png" width="450">
 
 
 # Events
