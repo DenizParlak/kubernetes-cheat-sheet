@@ -131,3 +131,68 @@ Yine troubleshoot durumlarında kullanılan başlıca komutlardan birisidir.
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/14.png" width="450">
 
+
+# DaemonSet
+
+1-) DaemonSet'lerin listelenmesi
+
+```kubectl get daemonset``` ve(ya) ```kubectl get ds```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/18.png" width="450">
+
+
+2-) DaemonSet hakkında bilgi alma
+
+```kubectl describe daemonset``` ve(ya) ```kubectl describe ds```
+
+
+# PersistentVolume
+
+1-) PersistentVolume'ların listelenmesi
+
+```kubectl get persistentvolume``` ve(ya) ```kubectl get pv```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/21.png" width="450">
+
+2-) PersistentVolume hakkında bilgi alma
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/22.png" width="450">
+
+# PersistentVolumeClaim
+
+1-) PersistentVolumeClaim'ların listelenmesi
+
+```kubectl get persistentvolumeclaim``` ve(ya) ```kubectl get pvc```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/23.png" width="450">
+
+2-) PersistentVolumeClaim'ler hakkında bilgi alma
+
+```kubectl describe persistentvolumeclaim``` ve(ya) ```kubectl describe pvc```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/24.png" width="450">
+
+
+
+# Events
+
+1-) Event'ların listelenmesi
+
+```kubectl get events``` ve(ya) ```kubectl get ev``` 
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/20.png" width="450">
+
+2-) Event'ların anlık takip edilmesi
+
+```kubectl get events -w``` ve(ya) ```kubectl get ev -w``` 
+
+
+
+## İpuçları
+
+Component'ler farklı namespace'ler altında oluşturulmuş olabilir, listelemeler varsayılan olarak "default" namespace'i baz alınarak yapılır. Bu tarz durumlarda "-n" parametresi ile hedef namespace belirtilir.
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/19.png" width="450">
+
+
+
