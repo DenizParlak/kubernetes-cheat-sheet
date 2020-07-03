@@ -27,7 +27,6 @@ Listeme işlemlerinde JSON bazlı filtrelemeler de yapılabilmektedir. Örneğin
 komutu kullanılır.
 
 
-
 2-) Node'lar hakkında bilgi alma
 
 ```kubectl describe nodes``` ve(ya) ```kubectl describe no```
@@ -43,6 +42,11 @@ Bir node hakkında çok daha ayrıntılı bilgi alabilmek için "get" ile birlik
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/3.png" width="450">
 
+3-) Node üzerinde değişiklik yapma
+
+```kubectl edit no node_adı```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/32.png" width="450">
 
 # Pods
 
@@ -90,6 +94,9 @@ Pod adı belirtilmediği sürece tüm pod'ların bilgisi listelenir. Özellikle 
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/28.png" width="450">
 
+5-) Pod üzerinde değişiklik yapma
+
+```kubectl edit po pod_adı```
 
 # Namespaces
 
@@ -170,7 +177,7 @@ Sonrasında service adı ve port tanımlanır.
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/31.png" width="450">
 
 
-1-) Service'lerin listelenmesi
+2-) Service'lerin listelenmesi
 
 ```kubectl get services``` ve(ya) ```kubectl get svc```
 
@@ -183,11 +190,15 @@ Sonrasında service adı ve port tanımlanır.
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/15.png" width="450">
 
 
-2-) Service'ler hakkında bilgi alma
+3-) Service'ler hakkında bilgi alma
 
-```kubectl describe services``` ve(ya) ```kubectl describe svc```
+```kubectl describe services service_adı``` ve(ya) ```kubectl describe svc service_adı```
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/14.png" width="450">
+
+4-) Service'lerin silinmesi
+
+```kubectl delete services service_adı``` ve(ya) ```kubectl delete svc service_adı```
 
 
 # DaemonSet
@@ -203,6 +214,10 @@ Sonrasında service adı ve port tanımlanır.
 
 ```kubectl describe daemonset``` ve(ya) ```kubectl describe ds```
 
+3-) DaemonSet'lerin silinmesi
+
+```kubectl delete daemonset daemonsets_adı``` ve(ya) ```kubectl delete ds daemonsets_adı```
+
 
 # PersistentVolume
 
@@ -214,7 +229,13 @@ Sonrasında service adı ve port tanımlanır.
 
 2-) PersistentVolume hakkında bilgi alma
 
+```kubectl describe persistentvolume``` ve(ya) ```kubectl describe pv```
+
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/22.png" width="450">
+
+3-) PersistentVolume'lerin silinmesi
+
+```kubectl delete persistentvolume persistentvolume_adı``` ve(ya) ```kubectl delete pv persistentvolume_adı```
 
 
 # PersistentVolumeClaim
@@ -231,6 +252,10 @@ Sonrasında service adı ve port tanımlanır.
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/24.png" width="450">
 
+3-) PersistentVolumeClaim'lerin silinmesi
+
+```kubectl delete persistentvolumeclaim persistentvolumeclaim_adı``` ve(ya) ```kubectl delete pvc persistentvolumeclaim_adı```
+
 
 # ReplicaSets
 
@@ -246,6 +271,9 @@ Sonrasında service adı ve port tanımlanır.
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/26.png" width="450">
 
+3-) ReplicaSet'lerin silinmesi
+
+```kubectl delete replicaset(s) replicaset_adı``` ve(ya) ```kubectl delete rs replicaset_adı```
 
 # Events
 
@@ -260,12 +288,20 @@ Sonrasında service adı ve port tanımlanır.
 ```kubectl get events -w``` ve(ya) ```kubectl get ev -w``` 
 
 
-
 ## İpuçları
 
-Component'ler farklı namespace'ler altında oluşturulmuş olabilir, listelemeler varsayılan olarak "default" namespace'i baz alınarak yapılır. Bu tarz durumlarda "-n" parametresi ile hedef namespace belirtilir.
+1-) Component'ler farklı namespace'ler altında oluşturulmuş olabilir, listelemeler varsayılan olarak "default" namespace'i baz alınarak yapılır. Bu tarz durumlarda "-n" parametresi ile hedef namespace belirtilir.
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/19.png" width="450">
 
+2-) Tüm yapıların listelenmesi
 
+```kubectl get all```
 
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/33.png" width="450">
+
+3-) Cluster hakkında temel bilgi alma
+
+```kubectl cluster-info```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/34.png" width="450">
