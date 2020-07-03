@@ -43,7 +43,7 @@ Bir node hakkında çok daha ayrıntılı bilgi alabilmek için "get" ile birlik
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/4.png" width="450">
 
 
-# Pods
+# Pods
 
 1-) Pod'ların listelenmesi
 
@@ -69,8 +69,6 @@ Bir node hakkında çok daha ayrıntılı bilgi alabilmek için "get" ile birlik
 Pod adı belirtilmediği sürece tüm pod'ların bilgisi listelenir. Özellikle troubleshooting gerektiren durumlarda ilk başvurulan komutlardan birisidir.
 
 
-
-
 # Namespaces
 
 1-) Namespace'lerin listelenmesi
@@ -88,8 +86,7 @@ Pod adı belirtilmediği sürece tüm pod'ların bilgisi listelenir. Özellikle 
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/9.png" width="450">
 
-
-# Deployments
+# Deployments
 
 1-) Deployment'ların listelenmesi
 
