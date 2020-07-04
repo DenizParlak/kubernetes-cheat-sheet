@@ -24,7 +24,7 @@ Listeme işlemlerinde JSON bazlı filtrelemeler de yapılabilmektedir. Örneğin
 
 ```kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}'```
 
-komutu kullanılır.
+gibi bir kullanım mümkündür.
 
 
 2-) Node'lar hakkında bilgi alma
@@ -98,7 +98,7 @@ Pod adı belirtilmediği sürece tüm pod'ların bilgisi listelenir. Özellikle 
 
 ```kubectl edit po pod_adı```
 
-# Namespaces
+# Namespaces
 
 1-) Yeni namespace oluşturma
 
@@ -196,7 +196,13 @@ Sonrasında service adı ve port tanımlanır.
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/14.png" width="450">
 
-4-) Service'lerin silinmesi
+4-) Service üzerinde değişiklik yapma
+
+```kubectl edit service``` ve(ya) ```kubectl edit svc```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/35.png" width="450">
+
+5-) Service'lerin silinmesi
 
 ```kubectl delete services service_adı``` ve(ya) ```kubectl delete svc service_adı```
 
@@ -214,7 +220,11 @@ Sonrasında service adı ve port tanımlanır.
 
 ```kubectl describe daemonset``` ve(ya) ```kubectl describe ds```
 
-3-) DaemonSet'lerin silinmesi
+3-) DaemonSet üzerinde değişiklik yapma
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/36.png" width="450">
+
+4-) DaemonSet'lerin silinmesi
 
 ```kubectl delete daemonset daemonsets_adı``` ve(ya) ```kubectl delete ds daemonsets_adı```
 
@@ -275,6 +285,36 @@ Sonrasında service adı ve port tanımlanır.
 
 ```kubectl delete replicaset(s) replicaset_adı``` ve(ya) ```kubectl delete rs replicaset_adı```
 
+# ConfigMaps
+
+1-) ConfigMap'lerin listelenmesi
+
+```kubectl get configmaps``` ve(ya) ```kubectl get cm```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/37.png" width="450">
+
+2-) ConfigMap'ler hakkında bilgi alma
+
+```kubectl describe configmaps configmap_adı``` ve(ya) ```kubectl describe cm configmap_adı```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/38.png" width="450">
+
+# Secrets
+
+1-) Secret'ların listelenmesi
+
+```kubectl get secret``` ve(ya) ```kubectl get secrets```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/39.png" width="450">
+
+# Roles
+
+1-) Rollerin listelenmesi
+
+```kubectl get roles```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/40.png" width="450">
+
 # Events
 
 1-) Event'ların listelenmesi
@@ -287,10 +327,33 @@ Sonrasında service adı ve port tanımlanır.
 
 ```kubectl get events -w``` ve(ya) ```kubectl get ev -w``` 
 
+# Logs
 
-## İpuçları
+1-) Pod loglarının görüntülenmesi
 
-1-) Component'ler farklı namespace'ler altında oluşturulmuş olabilir, listelemeler varsayılan olarak "default" namespace'i baz alınarak yapılır. Bu tarz durumlarda "-n" parametresi ile hedef namespace belirtilir.
+```kubectl logs pod_adı```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/41.png" width="450">
+
+2-) Son X satır log'ların listelenmesi
+
+```kubectl logs --tail=X pod_adı```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/42.png" width="450">
+
+3-) Son X saatlik - X dakikalık log'ların listelenmesi
+
+```kubectl logs --since=X pod_adı```
+
+Saat bazlı listelemede "h" kullanılır,
+
+Dakika bazlı listelemede "m" kullanılır.
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/43.png" width="450">
+
+## Genel Bilgiler ve İpuçları
+
+1-) Component'lar farklı namespace'ler altında oluşturulmuş olabilir, listelemeler varsayılan olarak "default" namespace'i baz alınarak yapılır. Bu tarz durumlarda "-n" parametresi ile hedef namespace belirtilir.
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/19.png" width="450">
 
@@ -305,3 +368,34 @@ Sonrasında service adı ve port tanımlanır.
 ```kubectl cluster-info```
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/34.png" width="450">
+
+4-) cat komutu ile çoklu component oluşturma
+
+```cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nightw
+spec:
+  containers:
+  - name: nightw
+    image: oraclelinux
+    args:
+    - sleep
+    - "1000"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu
+spec:
+  containers:
+  - name: ubuntu
+    image: ubuntu
+    args:
+    - sleep
+    - "1700"
+EOF```
+
+
+
