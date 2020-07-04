@@ -371,6 +371,17 @@ Dakika bazlı listelemede "m" kullanılır.
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/43.png" width="450">
 
+4-) Belirli bir selector'a sahip pod'lara ait log'ların listelenmesi
+
+```kubectl logs --selector=selector_kriterleri```
+
+Örneğin label olarak `run=main_svc` belirtilmiş pod'larınızın tümünden log çıktısı almak için
+
+```kubectl logs --selector=run=main_svc```
+
+yazabilirsiniz.
+
+
 ## Genel Bilgiler ve İpuçları
 
 1-) Component'lar farklı namespace'ler altında oluşturulmuş olabilir, listelemeler varsayılan olarak "default" namespace'i baz alınarak yapılır. Bu tarz durumlarda "-n" parametresi ile hedef namespace belirtilir.
