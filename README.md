@@ -240,6 +240,8 @@ Sonrasında service adı ve port tanımlanır.
 
 3-) DaemonSet üzerinde değişiklik yapma
 
+```kubectl edit daemonset``` ve(veya) ```kubectl edit ds```
+
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/36.png" width="450">
 
 4-) DaemonSet'lerin silinmesi
