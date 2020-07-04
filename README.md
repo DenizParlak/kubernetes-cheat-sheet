@@ -40,7 +40,7 @@ Bir node hakkında çok daha ayrıntılı bilgi alabilmek için "get" ile birlik
 
 ```kubectl get no -o yaml```
 
-<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/3.png" width="450">
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/4.png" width="450">
 
 3-) Node üzerinde değişiklik yapma
 
