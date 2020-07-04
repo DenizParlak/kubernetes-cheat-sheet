@@ -413,7 +413,8 @@ spec:
     args:
     - sleep
     - "1700"
-EOF```
+EOF
+```
 
 5-) Çoklu component silme
 
@@ -444,4 +445,3 @@ Resimdeki örnekte 1 replica olarak çalışan deployment 3 replica şeklinde g�
 ```kubectl label pod pod_adı mein=kampf```
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/50.png" width="450">
-
