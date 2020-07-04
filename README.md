@@ -98,6 +98,24 @@ Pod adı belirtilmediği sürece tüm pod'ların bilgisi listelenir. Özellikle 
 
 ```kubectl edit po pod_adı```
 
+6-) Pod'u interaktif modda başlatma
+
+```kubectl run -i --tty busybox --image=busybox -- sh```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/44.png" width="450">
+
+7-) Yeni başlatılan Pod'un özelliklerini YAML formatında dosyaya aktarma
+
+```kubectl run pod_adı --image=alpine -o yaml > my_pod.yaml```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/45.png" width="450">
+
+8-) Pod üzerinde komut çalıştırma
+
+```kubectl exec pod_adı -- komut```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/46.png" width="450">
+
 # Namespaces
 
 1-) Yeni namespace oluşturma
@@ -397,5 +415,33 @@ spec:
     - "1700"
 EOF```
 
+5-) Çoklu component silme
 
+```kubectl delete pod,svc mypod mysrv```
+
+6-) PersistentVolume'ların boyuta göre listelenmesi
+
+```kubectl get pv --sort-by=.spec.capacity.storage```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/47.png" width="450">
+
+7-) Ölçeklendirmenin güncellenmesi
+
+```kubectl scale --replicas=X component_tipi/component_adı```
+
+Resimdeki örnekte 1 replica olarak çalışan deployment 3 replica şeklinde güncellenmiştir.
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/48.png" width="450">
+
+8-) Container log'larını görüntüleme
+
+```kubectl logs pod_adı -c container_adı```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/49.png" width="450">
+
+9-) Mevcut Pod'a label ekleme
+
+```kubectl label pod pod_adı mein=kampf```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/50.png" width="450">
 
