@@ -381,6 +381,20 @@ Dakika bazlı listelemede "m" kullanılır.
 
 yazabilirsiniz.
 
+# ServiceAccounts
+
+1-) ServiceAccount'ların görüntülenmesi
+
+```kubectl get serviceaccounts``` ve(ya) ```kubectl get sa```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/51.png" width="450">
+
+2-) Bilgilerin .yaml formatında alınması
+
+```kubectl get serviceaccounts -o yaml``` ve(ya) ```kubectl get sa -o yaml```
+
+<img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/52.png" width="450">
+ 
 
 ## Genel Bilgiler ve İpuçları
 
@@ -458,3 +472,19 @@ Resimdeki örnekte 1 replica olarak çalışan deployment 3 replica şeklinde g�
 ```kubectl label pod pod_adı mein=kampf```
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/50.png" width="450">
+
+10-) Bash için otomatik komut tanımlamanın ayarlanması
+
+```source <(kubectl completion bash```
+
+Not: Komutun çalışması için bash-completion paketinin yüklü olması gerekmektedir.
+
+İşlemin kalıcı olması adına .bashrc dosyasına yazmak için:
+
+```echo "source <(kubectl completion bash)" >> ~/.bashrc``` 
+
+11-) Aynı anda birden çok kubeconfig dosyasının kullanılması
+
+config ve config2 isimli dosyalarımız olduğunu varsayalım.
+
+```export KUBECONFIG=~/.kube/config:~/.kube/config2```
