@@ -117,6 +117,7 @@ Pod adı belirtilmediği sürece tüm pod'ların bilgisi listelenir. Özellikle 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/46.png" width="450">
 
 9-) Pod'a Probe kullanımı ekleme
+
 Üç çeşit Probe vardır:
   1-Liveness Probe
     Pod istenildiği gibi çalışıyor mu kontrol edilir. Hata kodu alınırsa container silinir ve yeniden
@@ -152,9 +153,9 @@ Pod adı belirtilmediği sürece tüm pod'ların bilgisi listelenir. Özellikle 
     
     
     ```
-    
-    2-HTTPGet
     ```
+    2-HTTPGet
+    
     apiVersion: v1
     kind: Pod
     metadata:
