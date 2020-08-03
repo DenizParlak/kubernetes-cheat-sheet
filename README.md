@@ -119,19 +119,23 @@ Pod adı belirtilmediği sürece tüm pod'ların bilgisi listelenir. Özellikle 
 9-) Pod'a Probe kullanımı ekleme
 
 Üç çeşit Probe vardır:
-  1-Liveness Probe
+
+  -Liveness Probe
     Pod istenildiği gibi çalışıyor mu kontrol edilir. Hata kodu alınırsa container silinir ve yeniden
     başlatılır.
   
-  2-Readiness Probe
+  -Readiness Probe
     Pod trafik almaya uygun mu kontrol edilir. Hata kodu dönerse bu Pod'a trafik yönlendirmez.
 
-  3-Startup Probe
+  -Startup Probe
     Pod'un içerisindeki uygulama istenildiği şekilde çalışıyor mu kontrol edilir.
   
   Üç çeşit Probe yöntemi vardır:
-    1-ExecAction
+    
     ```
+    
+    -ExecAction
+    
     apiVersion: v1
     kind: Pod
     metadata: exec-probe
@@ -152,9 +156,8 @@ Pod adı belirtilmediği sürece tüm pod'ların bilgisi listelenir. Özellikle 
           periodSeconds: 5
     
     
-    ```
-    ```
-    2-HTTPGet
+    
+    -HTTPGet
     
     apiVersion: v1
     kind: Pod
@@ -171,9 +174,9 @@ Pod adı belirtilmediği sürece tüm pod'ların bilgisi listelenir. Özellikle 
           initialDelaySeconds: 5
           periodSeconds: 5
     
-    ```
-    3-TCPSocket
-    ```
+    
+    -TCPSocket
+    
     apiVersion: v1
     kind: Pod
     metadata:
