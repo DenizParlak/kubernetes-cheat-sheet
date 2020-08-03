@@ -116,6 +116,81 @@ Pod adı belirtilmediği sürece tüm pod'ların bilgisi listelenir. Özellikle 
 
 <img src="https://github.com/DenizParlak/kubernetes-cheat-sheet/blob/master/ss/46.png" width="450">
 
+9-) Pod'a Probe kullanımı ekleme
+Üç çeşit Probe vardır:
+  1-Liveness Probe
+    Pod istenildiği gibi çalışıyor mu kontrol edilir. Hata kodu alınırsa container silinir ve yeniden
+    başlatılır.
+  
+  2-Readiness Probe
+    Pod trafik almaya uygun mu kontrol edilir. Hata kodu dönerse bu Pod'a trafik yönlendirmez.
+
+  3-Startup Probe
+    Pod'un içerisindeki uygulama istenildiği şekilde çalışıyor mu kontrol edilir.
+  
+  Üç çeşit Probe yöntemi vardır:
+    1-ExecAction
+    ```
+    apiVersion: v1
+    kind: Pod
+    metadata: exec-probe
+    spec:
+      containers:
+      - name: exec-pod
+        image: nginx
+        args:
+        - /bin/sh
+        - -c
+        - touch /tmp/deneme.txt; sleep 600
+        livenessProbe:
+          exec:
+            command:
+            - cat 
+            - /tmp/deneme.txt
+          initialDelaySeconds: 5
+          periodSeconds: 5
+    
+    
+    ```
+    
+    2-HTTPGet
+    ```
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: httget-probe
+    spec:
+      containers:
+      - name: probe-pod
+        image: httpd:2.4
+        livenessProbe:
+          httppGet:
+            path: /index.html
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+    
+    ```
+    3-TCPSocket
+    ```
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: tcpsocket-probe
+    spec:
+      containers:
+      - name: tcpsocket-pod
+        image: nginx
+        ports:
+        - containerPort: 80
+        livenessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+    
+    
+    ```
 # Namespaces
 
 1-) Yeni namespace oluşturma
