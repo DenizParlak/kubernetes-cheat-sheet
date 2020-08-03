@@ -120,14 +120,14 @@ Pod adı belirtilmediği sürece tüm pod'ların bilgisi listelenir. Özellikle 
 
 Üç çeşit Probe vardır:
 
-  -Liveness Probe
+  -Liveness Probe:
     Pod istenildiği gibi çalışıyor mu kontrol edilir. Hata kodu alınırsa container silinir ve yeniden
     başlatılır.
   
-  -Readiness Probe
+  -Readiness Probe:
     Pod trafik almaya uygun mu kontrol edilir. Hata kodu dönerse bu Pod'a trafik yönlendirmez.
 
-  -Startup Probe
+  -Startup Probe:
     Pod'un içerisindeki uygulama istenildiği şekilde çalışıyor mu kontrol edilir.
   
   Üç çeşit Probe yöntemi vardır:
